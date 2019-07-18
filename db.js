@@ -80,7 +80,10 @@ function set(file, key, value) {
         return parsed;
       })
       // Make a new file everytime to add or change info
-      .then(data => fs.writeFile(file, JSON.stringify(data, null, 2)))
+      .then(data => {
+        fs.writeFile(file, JSON.stringify(data, null, 2));
+        log('You succesfully changed the value!');
+      })
       .catch(err => {
         log(err);
       })
